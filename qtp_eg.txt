@@ -1,0 +1,13 @@
+extern.declare micLong, "SendMessage", "user32.dll", "SendMessageA", micHwnd, micLong, micLong, micLong
+
+Dim hwnd
+hwnd = Window("Insert-Putty-Window-Object-here").GetROProperty("hWnd")
+
+Dim cursorpos
+
+cursorpos = extern.SendMessage(hwnd, &H500, 0, 0)
+
+msgbox  "Col: " & (cursorpos \ &H10000) & ", Row:" & (cursorpos Mod &H10000)
+
+
+exitAction
